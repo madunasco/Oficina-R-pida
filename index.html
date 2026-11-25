@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00001A">
+<title>Oficina Rápida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 1. SPLASH -->
+<section class="screen center active" id="s-splash">
+  <svg viewBox="0 0 180 168" aria-hidden="true">
+    <g fill="#FFB000">
+      <!-- chave de fenda -->
+      <path d="M8 10 L22 0 L38 16 L36 30 L72 66 L60 78 L24 42 L10 40 Z"/>
+      <path d="M100 98 L112 86 L162 136 a14 14 0 0 1 -20 20 Z"/>
+      <!-- chave inglesa -->
+      <path d="M148 0 a34 34 0 0 0 -34 44 L22 136 a14 14 0 0 0 20 20 L134 64 a34 34 0 0 0 44 -34 l-16 10 l-16 -6 l-4 -16 Z"/>
+    </g>
+    <circle cx="34" cy="146" r="5" fill="#00001A"/>
+  </svg>
+  <div class="logo-text">OFICINA<br>RÁPIDA</div>
+</section>
+
+<!-- 2. BOAS-VINDAS -->
+<section class="screen center" id="s-welcome">
+  <div class="wrap">
+    <h1 class="hero-title">Bem-vindo à<br>Oficina Rápida</h1>
+    <p class="hero-sub" style="margin-left:auto;margin-right:auto">Gerencie seus atendimentos de forma simples, rápida e digital.</p>
+    <button class="btn btn-lg" data-go="login">Acessar sistema</button>
+  </div>
+</section>
+
+<!-- 3. LOGIN -->
+<section class="screen center" id="s-login">
+  <button class="icon-btn" data-go="welcome" aria-label="Voltar"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <form class="wrap" id="login-form" novalidate>
+    <h1>Login</h1>
+    <p class="lead">Entre com seus dados para acessar o painel de atendimentos.</p>
+    <input class="field" id="lg-user" placeholder="Nome de usuário" autocomplete="username">
+    <input class="field" id="lg-pass" type="password" placeholder="Senha" autocomplete="current-password">
+    <div class="err" id="lg-err"></div>
+    <div style="text-align:center">
+      <button class="btn btn-lg" type="submit">Login</button>
+      <button type="button" class="help-link" id="help-btn">Precisa de ajuda?</button>
+    </div>
+  </form>
+</section>
+
+<!-- 4. UNIDADE -->
+<section class="screen center" id="s-unit">
+  <button class="top-right" id="logout-btn">Sair</button>
+  <div class="wrap">
+    <h1 class="hero-title" style="font-size:clamp(40px,10.5vw,54px)">Em que unidade estamos?</h1>
+    <p class="hero-sub" style="margin-left:auto;margin-right:auto">Acompanhe os registros e organize os serviços da sua unidade.</p>
+    <div class="stack">
+      <button class="btn btn-lg" data-unit="1">Unidade 1</button>
+      <button class="btn btn-lg" data-unit="2">Unidade 2</button>
+      <button class="btn btn-lg" data-unit="3">Unidade 3</button>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PAINEL DA UNIDADE -->
+<section class="screen page" id="s-dash">
+  <button class="icon-btn" data-go="unit" aria-label="Trocar unidade"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <div class="content">
+    <h2 class="page-title" id="dash-title">UNIDADE</h2>
+    <div class="dash-grid">
+      <div>
+        <h3 class="section-title">Nova solicitação</h3>
+        <form class="panel" id="new-form" novalidate>
+          <textarea class="input" id="f-desc" placeholder="Descreva detalhadamente a nova solicitação e registre."></textarea>
+          <input class="input" id="f-nome" placeholder="Nome do cliente">
+          <input class="input" id="f-contato" placeholder="Contato do cliente" inputmode="tel">
+          <input class="input" id="f-modelo" placeholder="Modelo do veículo">
+          <input class="input" id="f-placa" placeholder="Placa" maxlength="8" style="text-transform:uppercase">
+          <div class="form-actions"><button class="btn btn-md" type="submit">Registrar</button></div>
+        </form>
+      </div>
+      <div class="status-wrap" style="margin-top:34px">
+        <h3 class="section-title">Status operacional</h3>
+        <div class="status-grid">
+          <div class="status-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5h4"/></svg>
+            <span class="num" id="c-aguardando">0</span><span class="pill">Aguardando</span>
+          </div>
+          <div class="status-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/><path d="M3 3l6 6M7.5 4.5 4.5 7.5"/><path d="m14 14 6 6"/></svg>
+            <span class="num" id="c-andamento">0</span><span class="pill">Em andamento</span>
+          </div>
+          <div class="status-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+            <span class="num" id="c-concluido">0</span><span class="pill">Concluído</span>
+          </div>
+        </div>
+        <div class="center-row"><button class="btn btn-md" data-go="reg">Ver Registros</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6/7. REGISTROS -->
+<section class="screen page" id="s-reg">
+  <button class="icon-btn" data-go="dash" aria-label="Voltar ao painel"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <div class="content">
+    <h2 class="page-title">REGISTROS</h2>
+    <div class="reg-grid">
+      <div>
+        <h3 class="section-title" id="reg-label">Último registro</h3>
+        <div class="panel" id="reg-main"></div>
+      </div>
+      <aside class="reg-side">
+        <h3 class="section-title" style="margin-top:34px" id="prev-title">Registros anteriores</h3>
+        <div class="reg-side-inner">
+          <div class="prev-list" id="prev-list"></div>
+          <div class="drag-bar" id="drag-bar"><div class="drag-thumb" id="drag-thumb"></div></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
